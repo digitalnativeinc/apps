@@ -32,34 +32,47 @@ import teleport from './teleport';
 import transfer from './transfer';
 import treasury from './treasury';
 
+//custom
+import home from './home';
+import vault from './vault';
+import collateralize from './collateralize';
+import swap from './swap';
+import farm from './farm';
+
+
 export default function create (t: TFunction): Routes {
   return [
     accounts(t),
-    addresses(t),
-    explorer(t),
-    claims(t),
-    poll(t),
-    transfer(t),
-    teleport(t),
-    staking(t),
-    democracy(t),
-    council(t),
-    treasury(t),
-    bounties(t),
-    techcomm(t),
-    membership(t),
-    parachains(t),
-    gilt(t),
-    assets(t),
-    society(t),
-    calendar(t),
-    contracts(t),
-    storage(t),
-    extrinsics(t),
-    rpc(t),
-    signing(t),
-    sudo(t),
-    js(t),
-    settings(t)
+    // addresses(t),
+    // explorer(t),
+    // claims(t),
+    // poll(t),
+    // transfer(t),
+    // teleport(t),
+    // staking(t),
+    // democracy(t),
+    // council(t),
+    // treasury(t),
+    // bounties(t),
+    // techcomm(t),
+    // membership(t),
+    // parachains(t),
+    // gilt(t),
+    // assets(t),
+    // society(t),
+    // calendar(t),
+    // contracts(t),
+    // storage(t),
+    // extrinsics(t),
+    // rpc(t),
+    // signing(t),
+    // sudo(t),
+    // js(t),
+    settings(t),
+    home(t),
+    vault(t),
+    collateralize(t),
+    swap(t),
+    farm(t)
   ];
 }
