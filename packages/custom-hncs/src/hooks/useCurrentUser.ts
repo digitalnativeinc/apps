@@ -1,68 +1,69 @@
 import React, { useEffect, useState, useContext } from "react";
 import useInjectedAccounts, { UseAccounts } from "./useInjectedAccounts";
-import type { DeriveBalancesAll } from '@polkadot/api-derive/types';
-import { useApi, useCall } from "@polkadot/react-hooks";
+// import type { DeriveBalancesAll } from '@polkadot/api-derive/types';
+import { useApi } from "@polkadot/react-hooks";
 import { formatTokenDecimals } from "../utils/formats";
+import useStore from './useStore'
 
-import store from "store";
-
-const STORAGE_KEY = "options:InputAddress";
-
-interface UseCurrentUser extends UseAccounts {
+export interface UseCurrentUser extends UseAccounts {
   currentAddress: string;
   setCurrentUser: Function;
   getUserBalance: Function;
   isApiReady: boolean;
 }
 
-function readOptions(): Record<string, Record<string, string>> {
-  return (store.get(STORAGE_KEY) as Record<string, Record<string, string>>) || { defaults: {} };
+// seperate file?
+// showUserSelectionModal and hideUserSelectionModal are appended in UserContextHOC
+interface UseCurrentUserContext extends UseCurrentUser {
+  showUserSelectionModal: Function;
+  hideUserSelectionModal: Function;
 }
 
-function getLastValue(): any {
-  const options = readOptions();
-  return options.defaults.account || "";
-}
-
-function setLastValue(value: string): void {
-  const options = readOptions();
-  options.defaults.account = value;
-  store.set(STORAGE_KEY, options);
-}
-
-export const CurrentUserContext = React.createContext<UseCurrentUser>(({} as unknown) as UseCurrentUser);
+export const CurrentUserContext = React.createContext<UseCurrentUserContext>(({} as unknown) as UseCurrentUserContext);
 
 export function useCurrentUserContext() {
   return useContext(CurrentUserContext);
 }
 
 export default function useCurrentUser(): UseCurrentUser {
-  const {allAccounts, getAccount, hasAccounts, isReady} = useInjectedAccounts();
-  const [currentAddress, setCurrentAddress] = useState<string>(isReady && hasAccounts ? allAccounts[0].address : '');
+  const { allAccounts, getAccount, hasAccounts, isReady } = useInjectedAccounts();
   const { api, isApiReady } = useApi()
-  // must go two way
-  const balancesAll = useCall<DeriveBalancesAll>(!!currentAddress && isApiReady && api.derive.balances.all, [currentAddress]);
-  if (balancesAll) {
-    const res = balancesAll.freeBalance.add(balancesAll.reservedBalance)
-  }
+  const { getLastValue, setLastValue } = useStore('options:InputAddress', 'account')
 
+  // set to address from localStorage (either an address | '')
+  const [currentAddress, setCurrentAddress] = useState<string>(getLastValue());
+
+  
+  // --- leave for test
+  // must go two way
+  // const balancesAll = useCall<DeriveBalancesAll>(!!currentAddress && isApiReady && api.derive.balances.all, [currentAddress]);
+  // if (balancesAll) {
+  //   const res = balancesAll.freeBalance.add(balancesAll.reservedBalance)
+  // }
+  // -- 
+
+  // when ready and current user has not been set,
+  // take the first injected account and set it to the current account
+  // else if account is already set from local storage, validate it.
   useEffect(() => {
-    if (currentAddress === '' && isReady && hasAccounts) {
+    if (!isReady) return
+    if (currentAddress === '' && hasAccounts) {
       setCurrentAddress(allAccounts[0].address)
     }
     if (currentAddress !== '' && !getAccount(currentAddress)) {
-      if (isReady && hasAccounts) {
+      if (hasAccounts) {
         setCurrentAddress(allAccounts[0].address)
+      } else {
+        setCurrentAddress('')
       }
     }
-  }, [isReady, hasAccounts, allAccounts, getAccount])
+  }, [currentAddress, isReady, hasAccounts, allAccounts, getAccount])
 
   const getUserBalance = async () => {
     if (currentAddress !== "") {
       try {
 
         const res = await api.query.system.account(currentAddress);
-        console.log('resdata', res.data.free.toString(0))
        
         const amt = formatTokenDecimals(
           res.data.free.toString(),
@@ -81,27 +82,29 @@ export default function useCurrentUser(): UseCurrentUser {
     return Promise.reject("No address");
   };
 
+  // sets current user 
   const setCurrentUser = (address: string) => {
     if (getAccount(address) !== undefined) {
       setCurrentAddress(address);
     }
   };
 
-  useEffect(() => {
-    setCurrentAddress(getLastValue());
-  }, []);
-
-  // useEffect(() => {
-  //   if (accountsInfo.isReady && !accountsInfo.isAccount(lastValue)) {
-  //     setCurrentAddress("");
-  //   }
-  // }, [accountsInfo, lastValue]);
-
+  // update localstorage when current user changes
   useEffect(() => {
     if (currentAddress !== "") {
       setLastValue(currentAddress);
     }
   }, [currentAddress]);
 
-  return { currentAddress, allAccounts, getAccount, hasAccounts, isReady, setCurrentUser, getUserBalance, isApiReady };
+  
+  return { 
+    currentAddress, 
+    allAccounts, 
+    getAccount, 
+    hasAccounts, 
+    isReady, 
+    setCurrentUser, 
+    getUserBalance, 
+    isApiReady 
+  };
 }

@@ -25,10 +25,14 @@ export default function useAccounts(): UseAccounts {
     isReady: false,
   });
 
+  // subscribes to account changes on keyring
+  // keyring is a package provided by @polkadot 
+  // that manages the accounts tate
   useEffect((): (() => void) => {
     const subscription = keyring.accounts.subject.subscribe(
       (accounts): void => {
         if (mountedRef.current) {
+          // returns all accounts that have been injected
           const allAccounts = accounts
             ? Object.entries(accounts).reduce((filtered: any, item) => {
                 if (item[1].json.meta.isInjected !== undefined) {
@@ -51,6 +55,7 @@ export default function useAccounts(): UseAccounts {
       }
     );
 
+    // unsubscribe on unomount
     return (): void => {
       setTimeout(() => subscription.unsubscribe(), 0);
     };

@@ -44,22 +44,16 @@ function createExternals (t: TFunction): ItemRoute[] {
 
 function checkVisible ({ api, isApiConnected, isApiReady }: ApiProps, allowTeleport: boolean, hasAccounts: boolean, hasSudo: boolean, { isHidden, needsAccounts, needsApi, needsSudo, needsTeleport }: Route['display']): boolean {
   if (isHidden) {
-    console.log('bjhl, check vis 1')
     return false;
   } else if (needsAccounts && !hasAccounts) {
-    console.log('bjhl, check vis 2')
     return false;
   } else if (!needsApi) {
-    console.log('bjhl, check vis 3')
     return true;
   } else if (!isApiReady || !isApiConnected) {
-    console.log('bjhl, check vis 4')
     return false;
   } else if (needsSudo && !hasSudo) {
-    console.log('bjhl, check vis 5')
     return false;
   } else if (needsTeleport && !allowTeleport) {
-    console.log('bjhl, check vis 6')
     return false;
   }
 
@@ -78,7 +72,6 @@ function extractGroups (routing: Routes, groupNames: Record<string, string>, api
         } else {
           all[route.group].routes.push(route);
         }
-        console.log('bjhl, routing all', all)
 
         return all;
       }, {})
@@ -87,7 +80,6 @@ function extractGroups (routing: Routes, groupNames: Record<string, string>, api
       name,
       routes: routes.filter((_route) => {
         const {display} = _route
-        console.log('bjhl, display', _route, display, apiProps)
         return checkVisible(apiProps, allowTeleport, hasAccounts, hasSudo, display)
       }
       )
@@ -129,15 +121,12 @@ function Menu ({ className = '' }: Props): React.ReactElement<Props> {
     () => !!sudoKey && allAccounts.some((a) => sudoKey.eq(a)),
     [allAccounts, sudoKey]
   );
-  console.log('bjhl routeRef', routeRef.current)
-  console.log('bjhl groupRef', groupRef.current)
 
   const visibleGroups = useMemo(
     () => extractGroups(routeRef.current, groupRef.current, apiProps, allowTeleport, hasAccounts, hasSudo),
     [allowTeleport, apiProps, hasAccounts, hasSudo]
   );
 
-  console.log('bjhl visibleGroups', visibleGroups)
   const activeRoute = useMemo(
     () => routeRef.current.find(({ name }) =>
       location.pathname.startsWith(`/${name}`)
@@ -152,7 +141,6 @@ function Menu ({ className = '' }: Props): React.ReactElement<Props> {
           <ChainInfo />
           <ul className='menuItems'>
             {visibleGroups.map(({ name, routes }): React.ReactNode => {
-              console.log(name)
               return <Grouping
                 isActive={activeRoute && activeRoute.group === name.toLowerCase()}
                 key={name}

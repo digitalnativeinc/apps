@@ -17,6 +17,11 @@ import Apps from './Apps';
 import { darkTheme, lightTheme } from './themes';
 import WindowDimensions from './WindowDimensions';
 
+// @stnd
+import { UserContextHOC } from '@stnd/custom-hncs'
+import { ModalProvider } from "react-modal-hook";
+
+
 interface Props {
   store?: KeyringStore;
 }
@@ -35,6 +40,10 @@ function createTheme ({ uiTheme }: { uiTheme: string }): ThemeDef {
 function Root ({ store }: Props): React.ReactElement<Props> {
   const [theme, setTheme] = useState(() => createTheme(settings));
 
+  // settings is changed on the settings page.
+  // whenever the theme is changed, the event listener here
+  // changes the theme of the entire app
+  // refer to page-settings and @polkadot/ui-settings
   useEffect((): void => {
     settings.on('change', (settings) => setTheme(createTheme(settings)));
   }, []);
@@ -49,11 +58,15 @@ function Root ({ store }: Props): React.ReactElement<Props> {
           >
             <BlockAuthors>
               <Events>
-                <HashRouter>
-                  <WindowDimensions>
-                    <Apps />
-                  </WindowDimensions>
-                </HashRouter>
+                <ModalProvider>
+                  <UserContextHOC>
+                    <HashRouter>
+                      <WindowDimensions>
+                        <Apps />
+                      </WindowDimensions>
+                    </HashRouter>
+                  </UserContextHOC>
+                </ModalProvider>
               </Events>
             </BlockAuthors>
           </Api>

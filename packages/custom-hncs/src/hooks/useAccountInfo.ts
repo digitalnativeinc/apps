@@ -1,6 +1,7 @@
 import type { DeriveBalancesAll } from '@polkadot/api-derive/types';
 import { useApi, useCall } from "@polkadot/react-hooks";
 
+// given an address (account), return functions for fetching its info
 export default function useAccountInfo(address?:string) {
   const { api, isApiReady } = useApi();
 
@@ -13,5 +14,5 @@ export default function useAccountInfo(address?:string) {
     ? balancesAll.freeBalance.add(balancesAll.reservedBalance)
     : null;
     
-  return {balance}
+  return { balance }
 }

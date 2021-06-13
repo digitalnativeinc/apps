@@ -2,8 +2,8 @@ import React from "react";
 import styled from "styled-components";
 import { BareProps as Props } from "@polkadot/react-components/types";
 import { useToggle } from "@polkadot/react-hooks";
-import { TransactionContext } from "../hooks/useTransaction";
-import useCurrentUser from "../hooks/useCurrentUser";
+import { TransactionContext } from "../../hooks/useTransaction";
+import useCurrentUser from "../../hooks/useCurrentUser";
 import TransferModal from "./TransferModal";
 
 function TransferHOC({

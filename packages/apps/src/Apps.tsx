@@ -8,7 +8,12 @@ import styled, { ThemeContext } from 'styled-components';
 
 import AccountSidebar from '@polkadot/app-accounts/Sidebar';
 import { getSystemColor } from '@polkadot/apps-config';
+// bjhl, this globalStyle has almost everything nullified
 import GlobalStyle from '@polkadot/react-components/styles';
+// bjhl, refer to ./themes to customize the theme itself
+import { CustomAppStyle } from '@stnd/custom-hncs'
+// @stnd - global style for overall application, each page and custom components
+// global style is created using createGlobalStyle hook of styled-components
 import { useApi } from '@polkadot/react-hooks';
 import Signer from '@polkadot/react-signer';
 
@@ -16,6 +21,9 @@ import ConnectingOverlay from './overlays/Connecting';
 import Content from './Content';
 import Menu from './Menu';
 import WarmUp from './WarmUp';
+
+// @stnd
+import Sidebar from './Sidebar'
 
 export const PORTAL_ID = 'portals';
 
@@ -33,11 +41,15 @@ function Apps ({ className = '' }: Props): React.ReactElement<Props> {
   return (
     <>
       <GlobalStyle uiHighlight={uiHighlight} />
+      <CustomAppStyle />
       <div className={`apps--Wrapper theme--${theme} ${className}`}>
         <Menu />
         <AccountSidebar>
           <Signer>
-            <Content />
+            <div className="content">
+              <Sidebar/>
+              <Content />
+            </div>
           </Signer>
           <ConnectingOverlay />
           <div id={PORTAL_ID} />
@@ -54,4 +66,9 @@ export default React.memo(styled(Apps)`
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+
+  .content {
+    display: flex;
+    flex: 1;
+  }
 `);

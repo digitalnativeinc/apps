@@ -3370,8 +3370,8 @@ __metadata:
   resolution: "@stnd/app-collateralize@workspace:packages/page-collateralize"
   dependencies:
     "@babel/runtime": ^7.14.0
-    "@polkadot/react-components": ^0.92.2-16
-    "@polkadot/test-support": 0.92.2-16
+    "@polkadot/react-components": ^0.92.4-11
+    "@polkadot/test-support": 0.92.4-11
   languageName: unknown
   linkType: soft
 
@@ -3380,8 +3380,8 @@ __metadata:
   resolution: "@stnd/app-home@workspace:packages/page-home"
   dependencies:
     "@babel/runtime": ^7.14.0
-    "@polkadot/react-components": ^0.92.2-16
-    "@polkadot/test-support": 0.92.2-16
+    "@polkadot/react-components": ^0.92.4-11
+    "@polkadot/test-support": 0.92.4-11
   languageName: unknown
   linkType: soft
 
@@ -3390,8 +3390,8 @@ __metadata:
   resolution: "@stnd/app-vault@workspace:packages/page-vault"
   dependencies:
     "@babel/runtime": ^7.14.0
-    "@polkadot/react-components": ^0.92.2-16
-    "@polkadot/test-support": 0.92.2-16
+    "@polkadot/react-components": ^0.92.4-11
+    "@polkadot/test-support": 0.92.4-11
   languageName: unknown
   linkType: soft
 

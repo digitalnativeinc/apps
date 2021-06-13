@@ -456,7 +456,7 @@ export default createGlobalStyle<Props & ThemeProps>(({ theme, uiHighlight }: Pr
   // ${cssSemantic(theme)}
   // ${cssTheme}
   // ${cssForm}
-  // ${cssMedia}
+  ${cssMedia}
   // ${cssRx}
   // ${cssComponents(theme)}
 `);

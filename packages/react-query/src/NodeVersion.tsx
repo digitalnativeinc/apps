@@ -16,6 +16,7 @@ function NodeVersion ({ children, className = '', label }: Props): React.ReactEl
 
   // eg. 0.1.0-90d0bb6-x86_64-macos
   const displayVersion = systemVersion.split('-')[0];
+  console.log(label, displayVersion)
 
   return (
     <div className={className}>

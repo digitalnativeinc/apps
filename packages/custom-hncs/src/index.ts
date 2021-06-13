@@ -15,9 +15,10 @@ export { default as Collateralize } from "./Collateralize";
 export { default as Farm } from "./Farm";
 export { default as Scroller } from "./Scroller";
 export { default as News } from "./News";
-export { default as UserContextHOC } from "./UserContextHOC";
-export { default as TransferHOC } from "./TransferHOC";
+export { default as UserContextHOC } from "./components/UserContextHOC";
+export { default as TransferHOC } from "./components/TransferHOC";
 export { default as ThemeChanger } from "./ThemeChanger";
+export { default as AccountSelector } from './components/AccountSelector'
 
 // hooks
 export { default as useCoinData } from "./CryptoCard/useCoinData";
@@ -28,7 +29,11 @@ export { default as useAccount } from "./hooks/useAccount";
 export { useSocketIO } from "./hooks/useSocketIO";
 export { default as useStorage } from "./hooks/useStorage";
 export { default as useAccountInfo } from "./hooks/useAccountInfo";
+export { default as useCustomTheme } from './hooks/useCustomTheme';
 
 // functions
 export { default as inputToBn, isValidNumber } from "./inputToBn";
 export { formatPrice, formatTokenDecimals, padTokenInput } from "./utils";
+
+// styles
+export { default as CustomAppStyle } from './styles/AppStyle'
