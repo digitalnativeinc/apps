@@ -49,7 +49,7 @@ function Apps ({ className = '' }: Props): React.ReactElement<Props> {
         <AccountSidebar>
           <Signer>
             <div className="content">
-              <Sidebar/>
+              {<Sidebar/>}
               <Content />
             </div>
           </Signer>

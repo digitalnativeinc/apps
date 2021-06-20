@@ -4,7 +4,7 @@ import React, {useContext} from "react";
 import styled, {ThemeContext} from "styled-components";
 import type { BareProps as Props } from '@polkadot/react-components/types';
 
-import LogoLight from "../assets/images/standard-logo-navy.png";
+import LogoLight from "../assets/images/standard-logo.png";
 import LogoDark from "../assets/images/standard-logo.png";
 
 function Logo({

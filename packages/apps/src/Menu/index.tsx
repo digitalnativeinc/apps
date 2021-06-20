@@ -72,7 +72,6 @@ function extractGroups (routing: Routes, groupNames: Record<string, string>, api
         } else {
           all[route.group].routes.push(route);
         }
-
         return all;
       }, {})
     )
@@ -81,8 +80,7 @@ function extractGroups (routing: Routes, groupNames: Record<string, string>, api
       routes: routes.filter((_route) => {
         const {display} = _route
         return checkVisible(apiProps, allowTeleport, hasAccounts, hasSudo, display)
-      }
-      )
+      })
     }))
     .filter(({ routes }) => routes.length);
 }
@@ -98,22 +96,17 @@ function Menu ({ className = '' }: Props): React.ReactElement<Props> {
   const externalRef = useRef(createExternals(t));
   const routeRef = useRef(createRoutes(t));
 
-  // const groupRef = useRef({
-  //   accounts: t('Accounts'),
-  //   developer: t('Developer'),
-  //   governance: t('Governance'),
-  //   network: t('Network'),
-  //   settings: t('Settings')
-  // });
-
   const groupRef = useRef({
+    accounts: t('Accounts'),
+    developer: t('Developer'),
+    governance: t('Governance'),
+    network: t('Network'),
+    settings: t('Settings'),
     home: 'home',
     vault: 'vault',
     collateralize: 'collateralize',
     swap: 'swap',
     farm: 'farm',
-    accounts: t('Accounts'),
-    settings: t('Settings')
   });
 
 

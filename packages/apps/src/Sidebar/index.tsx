@@ -46,6 +46,8 @@ function extractGroups (routing: Routes, groupNames: Record<string, string>, api
   return Object
     .values(
       routing.reduce((all: Groups, route): Groups => {
+        // skip those not in groupref
+        if (!groupNames[route.group]) return all
         if (!all[route.group]) {
           all[route.group] = {
             name: groupNames[route.group],
