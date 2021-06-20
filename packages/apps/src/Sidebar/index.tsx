@@ -133,16 +133,16 @@ function Sidebar ({ children, className = '' }: Props): React.ReactElement<Props
 }
 
 export default React.memo(styled(Sidebar)`
-  background: var(--backgroundsb);
+  background: var(--bg--dark);
+  color: var(--text);
   bottom: 0;
   text-align: start;
   display: flex;
   flex-direction:column; 
   align-items: flex-start;
-//   box-shadow: 6px 0px 20px 0px rgba(0, 0, 0, 0.3);
   margin-left: -0.125rem;
-  max-width: 24rem;
-  min-width: 24rem;
+  max-width: 20rem;
+  min-width: 20rem;
   width: 100%;
   padding-top: 24px;
   padding-left: 24px;
@@ -158,7 +158,7 @@ export default React.memo(styled(Sidebar)`
   }
 
   .sidebar__menu__item.active {
-    background: var(--highlight);
+    background: var(--hl--sidebar);
 
   }
 
@@ -181,7 +181,6 @@ export default React.memo(styled(Sidebar)`
     margin-bottom: 10px;
 
     font-size: 16px;
-    color: var(--text);
     min-height: 52px;
     border-radius: 12px;
 
@@ -198,7 +197,7 @@ export default React.memo(styled(Sidebar)`
       content: '';
       width: 0%;
       height: 100%;
-      background: var(--grey);
+      background: var(--hl--sidebar);
       position: absolute;
       top: 0;
       left: 0;

@@ -101,5 +101,9 @@
     "stylelint-config-styled-components": "^0.1.1",
     "webpack": "^5.38.1",
     "webpack-cli": "^4.7.0"
+  },
+  "dependencies": {
+    "@polkadot/react-query": "workspace:packages/react-query",
+    "@polkadot/ui-settings": "^0.80.1"
   }
 }

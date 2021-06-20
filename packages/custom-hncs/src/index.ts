@@ -19,6 +19,7 @@ export { default as UserContextHOC } from "./components/UserContextHOC";
 export { default as TransferHOC } from "./components/TransferHOC";
 export { default as ThemeChanger } from "./ThemeChanger";
 export { default as AccountSelector } from './components/AccountSelector'
+export { default as Button } from './components/Button'
 
 // hooks
 export { default as useCoinData } from "./CryptoCard/useCoinData";
@@ -37,3 +38,5 @@ export { formatPrice, formatTokenDecimals, padTokenInput } from "./utils";
 
 // styles
 export { default as CustomAppStyle } from './styles/AppStyle'
+export { default as StndComponentsStyle } from './styles/HncsStyle'
+

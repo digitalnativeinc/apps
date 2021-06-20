@@ -1406,6 +1406,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@babel/runtime@npm:^7.14.5":
+  version: 7.14.6
+  resolution: "@babel/runtime@npm:7.14.6"
+  dependencies:
+    regenerator-runtime: ^0.13.4
+  checksum: 927ffed7871f2ed29f967a8dad7a72aa10662f93b6735a89d664a161fa4dc2074b8947ca159a8a0a49cec9a71c8de473d7c2b22d3de0ee4d7dd06d24a7f98018
+  languageName: node
+  linkType: hard
+
 "@babel/template@npm:^7.12.13, @babel/template@npm:^7.3.3":
   version: 7.12.13
   resolution: "@babel/template@npm:7.12.13"
@@ -3062,6 +3071,22 @@ __metadata:
     "@polkadot/networks": "*"
     "@polkadot/util": "*"
   checksum: 34acf9f907d043b6d32792750e363b4ccadf10e1165ae594cb23bb516a4cb71158b331c44a0352b5c7782c9ddfc826c31d8e1f3026c928eee9b2593f6e972c47
+  languageName: node
+  linkType: hard
+
+"@polkadot/ui-settings@npm:^0.80.1":
+  version: 0.80.1
+  resolution: "@polkadot/ui-settings@npm:0.80.1"
+  dependencies:
+    "@babel/runtime": ^7.14.5
+    "@polkadot/networks": ^6.8.1
+    "@polkadot/util": ^6.8.1
+    eventemitter3: ^4.0.7
+    store: ^2.0.12
+  peerDependencies:
+    "@polkadot/networks": "*"
+    "@polkadot/util": "*"
+  checksum: b79bc03ed22ba6023b68bccdcd511f3074c464ba69a08cddf9dd2d13950ddb0aadab66df5ee4247938bff704c0921c75ce3fb40847c0dac61c13c7e371080cfd
   languageName: node
   linkType: hard
 
@@ -15128,7 +15153,9 @@ fsevents@~2.1.2:
     "@crustio/crust-pin": ^0.0.1
     "@pinata/sdk": ^1.1.23
     "@polkadot/dev": ^0.62.41
+    "@polkadot/react-query": "workspace:packages/react-query"
     "@polkadot/ts": ^0.3.89
+    "@polkadot/ui-settings": ^0.80.1
     "@types/bn.js": ^4.11.6
     "@types/chart.js": ^2.9.32
     "@types/file-saver": ^2.0.2

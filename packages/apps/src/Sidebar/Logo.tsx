@@ -11,6 +11,7 @@ function Logo({
   className = ""
 }: Props): React.ReactElement<Props> {
     const { theme } = useContext(ThemeContext);
+    console.log('theme', theme)
 
     return (
         <a className={`${className} sidebar__logo`}>

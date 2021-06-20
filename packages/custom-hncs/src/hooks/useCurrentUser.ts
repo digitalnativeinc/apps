@@ -28,11 +28,10 @@ export function useCurrentUserContext() {
 export default function useCurrentUser(): UseCurrentUser {
   const { allAccounts, getAccount, hasAccounts, isReady } = useInjectedAccounts();
   const { api, isApiReady } = useApi()
-  const { getLastValue, setLastValue } = useStore('options:InputAddress', 'account')
+  const { getLastValue, setLastValue } = useStore('options:userAddress', 'account')
 
   // set to address from localStorage (either an address | '')
   const [currentAddress, setCurrentAddress] = useState<string>(getLastValue());
-
   
   // --- leave for test
   // must go two way

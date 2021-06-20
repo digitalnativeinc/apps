@@ -12,6 +12,7 @@ import { getSystemColor } from '@polkadot/apps-config';
 import GlobalStyle from '@polkadot/react-components/styles';
 // bjhl, refer to ./themes to customize the theme itself
 import { CustomAppStyle } from '@stnd/custom-hncs'
+import { StndComponentsStyle } from '@stnd/custom-hncs'
 // @stnd - global style for overall application, each page and custom components
 // global style is created using createGlobalStyle hook of styled-components
 import { useApi } from '@polkadot/react-hooks';
@@ -42,6 +43,7 @@ function Apps ({ className = '' }: Props): React.ReactElement<Props> {
     <>
       <GlobalStyle uiHighlight={uiHighlight} />
       <CustomAppStyle />
+      <StndComponentsStyle />
       <div className={`apps--Wrapper theme--${theme} ${className}`}>
         <Menu />
         <AccountSidebar>

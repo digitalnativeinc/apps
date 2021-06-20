@@ -15,10 +15,12 @@ function Button({ className, children }: Props): React.ReactElement<Props> {
 }
 
 export default React.memo(styled(Button)`
-  padding: 8px;
+  padding: 12px 16px;
   background: ${(props) => props.theme.highlight};
   color: ${(props) => props.theme.text};
   font-size: 16px;
   outline: 0;
   cursor: pointer;
+  display: inline-block;
+
 `);
