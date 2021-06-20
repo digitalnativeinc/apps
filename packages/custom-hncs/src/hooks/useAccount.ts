@@ -1,4 +1,4 @@
-import useCurrentUser from "./UseCurrentUser";
+import useCurrentUser from "./useCurrentUser";
 import { useApi } from "@polkadot/react-hooks";
 
 export default function useAccount() {
