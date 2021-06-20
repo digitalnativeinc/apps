@@ -61,8 +61,8 @@ function LiqRatioInput({
     <div
       className={`${className} liq-input--Wrapper`}
       onClick={e => {
-        if (!e.target.className.baseVal.includes("cPLiq")) return;
-        let rect = e.target.getBoundingClientRect();
+        if (!((e.target as HTMLElement).className as any).baseVal.includes("cPLiq")) return;
+        let rect = (e.target as Element).getBoundingClientRect();
         let rectCX = rect.x + rect.width / 2;
         let rectCY = rect.y + rect.height / 2;
         let x = e.clientX - rectCX; //x position within the element.

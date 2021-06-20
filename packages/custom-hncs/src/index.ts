@@ -17,7 +17,7 @@ export { default as Scroller } from "./Scroller";
 export { default as News } from "./News";
 export { default as UserContextHOC } from "./components/UserContextHOC";
 export { default as TransferHOC } from "./components/TransferHOC";
-export { default as ThemeChanger } from "./ThemeChanger";
+// export { default as ThemeChanger } from "./ThemeChanger";
 export { default as AccountSelector } from './components/AccountSelector'
 export { default as Button } from './components/Button'
 
