@@ -10,6 +10,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const webpack = require('webpack');
 
 const findPackages = require('../../scripts/findPackages.cjs');
+console.log(findPackages())
 
 function mapChunks (name, regs, inc) {
   return regs.reduce((result, test, index) => ({
@@ -30,6 +31,7 @@ function createWebpack (context, mode = 'production') {
 
     return alias;
   }, {});
+  console.log(alias)
   const plugins = fs.existsSync(path.join(context, 'public'))
     ? new CopyWebpackPlugin({ patterns: [{ from: 'public' }] })
     : [];
@@ -41,11 +43,11 @@ function createWebpack (context, mode = 'production') {
     module: {
       rules: [
         {
-          include: /node_modules/,
+          include: [/node_modules/, /stnd-react-components/],
           test: /\.css$/,
           use: [
-            MiniCssExtractPlugin.loader,
-            require.resolve('css-loader')
+            MiniCssExtractPlugin.loader, 
+            require.resolve('css-loader'),
           ]
         },
         {
@@ -70,12 +72,12 @@ function createWebpack (context, mode = 'production') {
           exclude: [/semantic-ui-css/],
           test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/],
           use: [
-            {
-              loader: require.resolve('url-loader'),
-              options: {
-                esModule: false,
-                limit: 10000,
-                name: 'static/[name].[contenthash:8].[ext]'
+              {
+                loader: require.resolve('url-loader'),
+                options: {
+                  esModule: false,
+                  limit: 10000,
+                  name: 'static/[name].[contenthash:8].[ext]'
               }
             }
           ]

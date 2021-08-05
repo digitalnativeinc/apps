@@ -79,7 +79,11 @@
       "@polkadot/react-signer": [ "packages/react-signer/src" ],
       "@polkadot/react-signer/*": [ "packages/react-signer/src/*" ],
       "@polkadot/test-support/": [ "packages/test-support/src/" ],
-      "@polkadot/test-support/*": [ "packages/test-support/src/*" ]
+      "@polkadot/test-support/*": [ "packages/test-support/src/*" ],
+      "@stnd/react-components/*": [ "packages/stnd-react-components/src/*" ],
+      "@stnd/react-hooks/*": [ "packages/stnd-react-hooks/src/*" ],
+      "@stnd/app-test/*": [ "packages/page-test/src/*" ]
+
     },
     "skipLibCheck": true,
     "typeRoots": [

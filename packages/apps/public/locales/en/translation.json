@@ -115,6 +115,7 @@
   "Stash account (increase the amount at stake)": "",
   "Submit (no signature)": "",
   "Swap to a non-executing approval type, with subsequent calls providing the actual call data.": "",
+  "Test": "",
   "The Curator that will be slashed.": "",
   "The Curator that will be unassigned": "",
   "The account that will create the transaction.": "",

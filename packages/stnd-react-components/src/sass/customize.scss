@@ -1,0 +1,43 @@
+@charset "utf-8";
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+.r-0 {
+    border-radius: 0;
+}
+
+.r-1 {
+    border-radius: 0.25rem;
+}
+
+.r-2 {
+    border-radius: 0.5rem;
+}
+
+.r-3 {
+    border-radius: 0.75rem;
+}
+
+.r-4 {
+    border-radius: 1rem;
+}
+
+.r-5 {
+    border-radius: 1.5rem;
+}
+
+.r-6 {
+    border-radius: 3rem;
+}
+
+$primary: #C6137F;
+$link: #31A6F4;
+$info: #BAB8C0;
+$success: #6FCF97;
+$danger: #EB5757;
+$dark: #0C0424;
+$text: #fff;
+$text-light: $info;
+$background: #170C34;
+$family-primary: 'Poppins';
+
+@import "../../../../node_modules/bulma/bulma.sass";

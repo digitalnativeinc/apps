@@ -6,6 +6,7 @@
   "Network": "Network",
   "Settings": "Settings",
   "Switch": "Switch",
+  "Test": "Test",
   "Waiting for authorization from the extension. Please open the installed extension and approve or reject access.": "Waiting for authorization from the extension. Please open the installed extension and approve or reject access.",
   "Waiting to make a connection to the remote endpoint and finishing API initialization.": "Waiting to make a connection to the remote endpoint and finishing API initialization.",
   "You are connecting from a secure location to an insecure WebSocket ({{wsUrl}}). Due to browser mixed-content security policies this connection type is not allowed. Change the RPC service to a secure 'wss' endpoint.": "You are connecting from a secure location to an insecure WebSocket ({{wsUrl}}). Due to browser mixed-content security policies this connection type is not allowed. Change the RPC service to a secure 'wss' endpoint.",

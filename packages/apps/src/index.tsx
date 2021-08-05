@@ -3,6 +3,8 @@
 
 // setup these right at front
 import './initSettings';
+import 'animate.css/animate.min.css';
+import '@stnd/react-components/styles/customize.css';
 import 'semantic-ui-css/semantic.min.css';
 import '@polkadot/react-components/i18n';
 

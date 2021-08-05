@@ -2,11 +2,13 @@
 // SPDX-License-Identifier: Apache-2.0
 
 const path = require('path');
+console.log(path)
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const webpack = require('webpack');
 const { merge } = require('webpack-merge');
 
 const baseConfig = require('./webpack.base.cjs');
+console.log(baseConfig)
 
 module.exports = merge(
   baseConfig(__dirname, 'development'),
